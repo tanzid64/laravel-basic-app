@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +19,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Admin Routes
+Route::middleware(['auth'])->group(function () {
+    Route::post('/admin/logout', [AdminController::class, 'admin_logout'])->name('admin.logout');
+    
+    Route::get('/admin/dashboard', function () {
+        return view('admin.index');
+    })->name('admin.dashboard');
+});
