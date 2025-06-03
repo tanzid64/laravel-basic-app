@@ -26,10 +26,22 @@ class AdminController extends Controller
             // ** Logout User **
             Auth::logout();
             // ** Redirect to Verification Page **
-            // return redirect()->route('admin.verify')->with('message', 'Verification Code Sent to Your Email');
+            return redirect(route('admin.verify'))->with('message', 'Verification Code Sent to Your Email');
         };
         // ** Redirect to Login Page **
         return redirect()->back()->withErrors(['email' => 'Invalid Credentials']);
+    }
+
+    public function admin_verify(Request $request){
+        return view('auth.verify');
+    }
+
+    public function admin_verification_verify(Request $request){
+        $request->validate([
+            'verification_code' => 'required|numeric|digits:6',
+        ]);
+        
+        
     }
 
     public function admin_logout(Request $request){

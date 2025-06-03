@@ -22,6 +22,8 @@ require __DIR__.'/auth.php';
 
 // Admin Routes
 Route::post('/admin/login', [AdminController::class, 'admin_login'])->name('admin.login');
+Route::get('/admin/verify', [AdminController::class, 'admin_verify'])->name('admin.verify');
+Route::post('/admin/verification/verify', [AdminController::class, 'admin_verification_verify'])->name('admin.verification.verify');
 Route::middleware(['auth'])->group(function () {
     Route::post('/admin/logout', [AdminController::class, 'admin_logout'])->name('admin.logout');
     
