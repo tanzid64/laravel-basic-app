@@ -38,10 +38,18 @@ class AdminController extends Controller
 
     public function admin_verification_verify(Request $request){
         $request->validate([
-            'verification_code' => 'required|numeric|digits:6',
+            'verification_code' => 'required|numeric',
         ]);
-        
-        
+
+        $verificationCode = $request->input('verification_code');
+        $code = session('verification_code');
+
+        if($verificationCode == $code){
+            Auth::loginUsingId(session('user_id'));
+            session()->forget('verification_code', 'user_id');
+            return redirect()->intended(route('admin.dashboard'));
+        }
+        return redirect()->back()->withErrors(['verification_code' => 'Invalid Verification Code']);
     }
 
     public function admin_logout(Request $request){
