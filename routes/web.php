@@ -26,8 +26,8 @@ Route::get('/admin/verify', [AdminController::class, 'admin_verify'])->name('adm
 Route::post('/admin/verification/verify', [AdminController::class, 'admin_verification_verify'])->name('admin.verification.verify');
 Route::middleware(['auth'])->group(function () {
     Route::post('/admin/logout', [AdminController::class, 'admin_logout'])->name('admin.logout');
-    
     Route::get('/admin/dashboard', function () {
         return view('admin.index');
     })->name('admin.dashboard');
+    Route::get('/admin/profile', [AdminController::class, 'admin_profile'])->name('admin.profile');
 });

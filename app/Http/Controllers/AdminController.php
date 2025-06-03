@@ -58,4 +58,9 @@ class AdminController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login');
     }
+
+    public function admin_profile(){
+        $user = Auth::user();
+        return view('admin.profile', compact('user'));
+    }
 }
