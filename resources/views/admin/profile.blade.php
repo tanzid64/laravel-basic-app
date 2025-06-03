@@ -25,7 +25,7 @@
                         <div class="align-items-center">
                             <div class="d-flex align-items-center">
                                 <img
-                                    src="{{ (!empty($user_data->photo)) ? url('upload/user_images'.$user_data->photo) : url('upload/no_image.jpg') }}"
+                                    src="{{ (!empty($user_data->photo)) ? url('upload/user_images/'.$user_data->photo) : url('upload/no_image.jpg') }}"
                                     class="rounded-circle avatar-xxl img-thumbnail float-start"
                                     alt="image profile"
                                 />
@@ -68,7 +68,8 @@
                                             </div>
 
                                             <div class="card-body">
-                                                <form>
+                                                <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
+                                                    @csrf
                                                     <div
                                                         class="form-group mb-3 row"
                                                     >
@@ -170,12 +171,11 @@
                                                             class="col-lg-12 col-xl-12"
                                                         >
                                                             <textarea
-                                                                class="form-control"
-                                                                type="text"
-                                                                id="address"
-                                                                name="address"
-                                                                value="{{ $user_data->address ?? '' }}"
-                                                            ></textarea>
+                                                                  class="form-control"
+                                                                  id="address"
+                                                                  name="address"
+                                                              >{{ $user_data->address }}
+                                                            </textarea>
                                                         </div>
                                                     </div>
 
@@ -221,7 +221,7 @@
                                                             >
                                                               <img
                                                                   id="showProfileImage"
-                                                                  src="{{ (!empty($user_data->photo)) ? url('upload/user_images'.$user_data->photo) : url('upload/no_image.jpg') }}"
+                                                                  src="{{ (!empty($user_data->photo)) ? url('upload/user_images/'.$user_data->photo) : url('upload/no_image.jpg') }}"
                                                                   class="rounded-circle avatar-xxl img-thumbnail float-start"
                                                                   alt="image profile"
                                                               />

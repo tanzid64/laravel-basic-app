@@ -30,4 +30,5 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.index');
     })->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'admin_profile'])->name('admin.profile');
+    Route::post('/admin/profile/update', [AdminController::class, 'admin_profile_update'])->name('admin.profile.update');
 });
