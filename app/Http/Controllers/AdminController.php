@@ -6,7 +6,9 @@ use App\Mail\VerificationCodeMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -92,5 +94,47 @@ class AdminController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    }
+
+    public function admin_password_update(Request $request)
+    {
+        $user = Auth::user();
+
+        // Step 1: Validate basic rules
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed|min:8',
+        ]);
+
+        // Step 2: Add custom old password check
+        $validator->after(function ($validator) use ($request, $user) {
+            if (!Hash::check($request->old_password, $user->password)) {
+                $validator->errors()->add('old_password', 'The old password is incorrect.');
+            }
+        });
+
+        // Step 3: Return with errors if validation fails
+        if ($validator->fails()) {
+            $notification = array(
+                'message' => 'Validation Error',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with($notification);
+        }
+
+        // Step 4: Update the password
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        Auth::logout();
+        // Step 5: Optional success message
+        return redirect()->route('admin.login')->with([
+            'message' => 'Password updated successfully.',
+            'alert-type' => 'success',
+        ]);
     }
 }
