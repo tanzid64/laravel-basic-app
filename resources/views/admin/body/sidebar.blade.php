@@ -27,7 +27,7 @@
 
                 <li class="menu-title">Menu</li>
                  <li>
-                    <a href="{{ route('dashboard') }}" class="tp-link">
+                    <a href="{{ route('admin.dashboard') }}" class="tp-link">
                         <i data-feather="home"></i>
                         <span> Dashboard </span>
                     </a>
