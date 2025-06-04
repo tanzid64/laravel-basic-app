@@ -35,7 +35,7 @@
                                 </td>
                                 <td>{{ Str::limit($testimonial->message, 50) }}</td>
                                 <td class="text-center">
-                                  <a href="" class="btn btn-primary btn-sm">
+                                  <a href="{{ route('edit.testimonial', $testimonial->id) }}" class="btn btn-primary btn-sm">
                                     Edit
                                   </a>
                                   <a href="" class="btn btn-danger btn-sm">

@@ -34,5 +34,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/testimonials', 'all_testimonials')->name('all.testimonials');
         Route::get('/testimonials/create', 'add_testimonial')->name('add.testimonial');
         Route::post('/testimonials/create', 'create_testimonial')->name('create.testimonial');
+        Route::get('/testimonials/edit/{id}', 'edit_testimonial')->name('edit.testimonial');
+        Route::post('/testimonials/update/{id}', 'update_testimonial')->name('update.testimonial');
     });
 });
