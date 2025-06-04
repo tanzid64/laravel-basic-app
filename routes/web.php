@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,4 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/profile', [AdminController::class, 'admin_profile'])->name('admin.profile');
     Route::post('/admin/profile/update', [AdminController::class, 'admin_profile_update'])->name('admin.profile.update');
     Route::post('/admin/password/update', [AdminController::class, 'admin_password_update'])->name('admin.password.update');
+    // ** Testimonials Routes **
+    Route::controller(TestimonialController::class)->group(function () {
+        Route::get('/testimonials', 'all_testimonials')->name('all.testimonials');
+        Route::get('/testimonials/create', 'add_testimonial')->name('add.testimonial');
+    });
 });

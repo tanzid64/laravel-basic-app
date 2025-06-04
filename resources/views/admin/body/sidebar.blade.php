@@ -44,10 +44,10 @@
                     <div class="collapse" id="sidebarAuth">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="auth-login.html" class="tp-link">All Testimonials</a>
+                                <a href="{{ route('all.testimonials') }}" class="tp-link">All Testimonials</a>
                             </li>
                             <li>
-                                <a href="auth-register.html" class="tp-link">Add Testimonial</a>
+                                <a href="{{ route('add.testimonial') }}" class="tp-link">Add Testimonial</a>
                             </li>
                             
                         </ul>

@@ -1,0 +1,61 @@
+@extends('admin.base')
+
+@section('admin')
+
+<div class="container-xxl">
+    <!-- Datatables  -->
+    <div class="row py-3">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-header">
+                    <h5 class="card-title mb-0">All Testimonials</h5>
+                </div><!-- end card header -->
+
+                <div class="card-body">
+                    <table id="testimonialTable" class="table table-bordered dt-responsive table-responsive nowrap">
+                        <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Image</th>
+                            <th>Message</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($testimonials as $key=>$testimonial)
+                          <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $testimonial->name }}</td>
+                                <td>{{ $testimonial->position }}</td>
+                                <td>
+                                  <img src="{{ asset($testimonial->image) }}" alt="{{ $testimonial->name }}" style="width: 50px; height: 50px;">
+                                </td>
+                                <td>{{ $testimonial->message }}</td>
+                                <td>
+                                  <a href="" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                  <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#testimonialTable').DataTable({
+      "language": {
+        "emptyTable": "No testimonials available",
+      },
+      "infoEmpty": "No testimonials to show",
+    });
+  });
+</script>
+@endsection
