@@ -46,7 +46,7 @@
                                         </div>
 
                                         <div class="card-body">
-                                            <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('create.testimonial') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div
                                                     class="form-group mb-3 row"
@@ -63,8 +63,8 @@
                                                             class="form-control"
                                                             type="text"
                                                             id="name"
+                                                            placeholder="Name"
                                                             name="name"
-                                                            value="{{ $user_data->name }}"
                                                         />
                                                     </div>
                                                 </div>
@@ -176,14 +176,14 @@
   </div>
   <script type="text/javascript">
     // ** To show profile image before upload
-    $(document).ready(function(){
-      $('#photo').on('change', function(e){
-        var reader = new FileReader();
-        reader.onload = function(e){
-          $('#showProfileImage').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(e.target.files[0]);
-      })
-    })
-  </script>
+        $(document).ready(function(){
+            $('#image').on('change', function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showProfileImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            });
+        });
+    </script>
 @endsection
