@@ -23,6 +23,12 @@ class TestimonialController extends Controller
 
     public function create_testimonial(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'position' => 'required',
+            'message' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         // ** Upload Image **
         if ($request->file('image')) {
             $img = $request->file('image');
@@ -73,6 +79,20 @@ class TestimonialController extends Controller
         ]);
         $notification = array(
             'message' => 'Testimonial updated successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.testimonials')->with($notification);
+    }
+
+    public function delete_testimonial($id)
+    {
+        $testimonial = Testimonial::find($id);
+        if ($testimonial->image) {
+            unlink($testimonial->image);
+        }
+        $testimonial->delete();
+        $notification = array(
+            'message' => 'Testimonial deleted successfully',
             'alert-type' => 'success'
         );
         return redirect()->route('all.testimonials')->with($notification);

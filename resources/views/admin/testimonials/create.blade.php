@@ -66,6 +66,9 @@
                                                             placeholder="Name"
                                                             name="name"
                                                         />
+                                                        @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -87,6 +90,9 @@
                                                             name="position"
                                                             placeholder="Position"
                                                         />
+                                                        @error('position')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -107,6 +113,9 @@
                                                             name="message"
                                                             placeholder="Message"
                                                         ></textarea>
+                                                        @error('message')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -121,9 +130,6 @@
                                                     <div
                                                         class="col-lg-12 col-xl-12"
                                                     >
-                                                        <div
-                                                            class="input-group"
-                                                        >
                                                             <input
                                                                 type="file"
                                                                 class="form-control"
@@ -132,7 +138,9 @@
                                                                 placeholder="Image"
                                                                 aria-describedby="basic-addon1"
                                                             />
-                                                        </div>
+                                                            @error('image')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
                                                     </div>
                                                 </div>
 

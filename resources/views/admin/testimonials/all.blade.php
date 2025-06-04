@@ -38,7 +38,9 @@
                                   <a href="{{ route('edit.testimonial', $testimonial->id) }}" class="btn btn-primary btn-sm">
                                     Edit
                                   </a>
-                                  <a href="" class="btn btn-danger btn-sm">
+                                  <a href="{{ route('delete.testimonial', $testimonial->id) }}"
+                                    id="delete"
+                                    class="btn btn-danger btn-sm">
                                     Delete
                                   </a>
                                 </td>

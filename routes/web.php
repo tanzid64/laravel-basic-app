@@ -36,5 +36,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/testimonials/create', 'create_testimonial')->name('create.testimonial');
         Route::get('/testimonials/edit/{id}', 'edit_testimonial')->name('edit.testimonial');
         Route::post('/testimonials/update/{id}', 'update_testimonial')->name('update.testimonial');
+        Route::get('/testimonials/delete/{id}', 'delete_testimonial')->name('delete.testimonial');
     });
 });
