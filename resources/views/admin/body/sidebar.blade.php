@@ -26,7 +26,7 @@
             <ul id="side-menu">
 
                 <li class="menu-title">Menu</li>
-                 <li>
+                <li>
                     <a href="{{ route('admin.dashboard') }}" class="tp-link">
                         <i data-feather="home"></i>
                         <span> Dashboard </span>
@@ -38,16 +38,16 @@
                 <li>
                     <a href="#sidebarAuth" data-bs-toggle="collapse">
                         <i data-feather="users"></i>
-                        <span> Authentication </span>
+                        <span> Testimonials </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarAuth">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="auth-login.html" class="tp-link">Log In</a>
+                                <a href="auth-login.html" class="tp-link">All Testimonials</a>
                             </li>
                             <li>
-                                <a href="auth-register.html" class="tp-link">Register</a>
+                                <a href="auth-register.html" class="tp-link">Add Testimonial</a>
                             </li>
                             
                         </ul>
