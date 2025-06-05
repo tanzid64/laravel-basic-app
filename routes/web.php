@@ -43,5 +43,6 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(HeroController::class)->group(function () {
         Route::get('/heroes', 'get_hero')->name('get.hero');
         Route::post('/heroes/update', 'update_hero')->name('update.hero');
+        Route::post('/heroes/update/content', 'update_hero_content')->name('update.hero.content');
     });
 });

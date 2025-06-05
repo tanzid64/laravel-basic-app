@@ -42,4 +42,19 @@ class HeroController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    public function update_hero_content(Request $request)
+    {
+        $hero = Hero::find(1);
+        if ($request->field === 'title') {
+            $hero->update([
+                'title' => $request->value
+            ]);
+        } else if ($request->field === 'description') {
+            $hero->update([
+                'description' => $request->value
+            ]);
+        }
+        return response()->json(['success' => true]);
+    }
 }
