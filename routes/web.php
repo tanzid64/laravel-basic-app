@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HeroController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,5 +38,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/testimonials/edit/{id}', 'edit_testimonial')->name('edit.testimonial');
         Route::post('/testimonials/update/{id}', 'update_testimonial')->name('update.testimonial');
         Route::get('/testimonials/delete/{id}', 'delete_testimonial')->name('delete.testimonial');
+    });
+    // ** Hero Routes **
+    Route::controller(HeroController::class)->group(function () {
+        Route::get('/heroes', 'get_hero')->name('get.hero');
+        Route::post('/heroes/update', 'update_hero')->name('update.hero');
     });
 });
